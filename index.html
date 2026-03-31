@@ -43,23 +43,32 @@
 
         <!-- features -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-            <div class="glass p-8 rounded-3xl glow">
-                <div class="h-64 bg-zinc-900 rounded-2xl mb-6 flex items-center justify-center text-zinc-400 text-xl">ESP + Chams</div>
-                <p class="text-lg font-medium">See enemies through walls • Highlight operators</p>
+            <div class="glass p-10 rounded-3xl glow">
+                <p class="text-3xl font-bold mb-3">ESP / Chams</p>
+                <p class="text-zinc-400">See enemies through walls • Highlight operators</p>
             </div>
-            <div class="glass p-8 rounded-3xl glow">
-                <div class="h-64 bg-zinc-900 rounded-2xl mb-6 flex items-center justify-center text-zinc-400 text-xl">Aimbot + No Recoil</div>
-                <p class="text-lg font-medium">Smooth aim • Recoil control scripts</p>
+            <div class="glass p-10 rounded-3xl glow">
+                <p class="text-3xl font-bold mb-3">Aimbot + No Recoil</p>
+                <p class="text-zinc-400">Smooth aim • Recoil control scripts</p>
             </div>
         </div>
 
         <!-- how to use -->
         <div class="mt-20 max-w-2xl mx-auto glass p-10 rounded-3xl">
-            <h2 class="text-red-600 uppercase tracking-widest text-sm font-bold mb-6">HOW TO USE (3 EASY STEPS)</h2>
-            <ol class="text-left space-y-6 text-lg">
-                <li class="flex gap-4"><span class="font-black text-red-500">1.</span> Download and extract the file</li>
-                <li class="flex gap-4"><span class="font-black text-red-500">2.</span> Open the .exe FIRST</li>
-                <li class="flex gap-4"><span class="font-black text-red-500">3.</span> THEN launch Rainbow Six Siege and press <span class="font-black">INSERT</span> to open the menu</li>
+            <h2 class="text-red-600 uppercase tracking-widest text-sm font-bold mb-8">HOW TO USE (3 EASY STEPS)</h2>
+            <ol class="text-left space-y-8 text-lg">
+                <li class="flex gap-4 items-start">
+                    <span class="font-black text-red-500 text-xl">1.</span> 
+                    Download and extract the file
+                </li>
+                <li class="flex gap-4 items-start">
+                    <span class="font-black text-red-500 text-xl">2.</span> 
+                    Open the .exe FIRST
+                </li>
+                <li class="flex gap-4 items-start">
+                    <span class="font-black text-red-500 text-xl">3.</span> 
+                    THEN launch Rainbow Six Siege and press <span class="font-black bg-zinc-900 px-3 py-1 rounded">INSERT</span> to open the menu
+                </li>
             </ol>
         </div>
 
@@ -96,8 +105,7 @@
             const overlay = document.getElementById('loading-overlay');
             overlay.classList.remove('hidden');
             setTimeout(() => {
-                // ← put your actual direct download link here
-                window.location.href = "https://your-direct-link-here.com/Reaper_v2.4.exe";
+                window.location.href = "https://your-direct-link-here.com/Reaper_v2.4.exe"; // ← change to your real link
                 overlay.classList.add('hidden');
             }, 2200);
         }
