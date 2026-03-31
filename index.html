@@ -3,31 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reaper | Undetected Rainbow Six Siege Cheats 2026</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>REAPER | Undetected Rainbow Six Siege Cheats 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&display=swap');
+        body { background-color: #000; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(16px); }
+        .glow { box-shadow: 0 0 40px rgba(255,0,0,0.3); }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>REAPER</h1>
-        <p class="subtitle">Undetected Rainbow Six Siege Cheats • 2026</p>
-    </header>
+<body class="min-h-screen flex flex-col items-center">
 
-    <div class="container">
-        <h2>FREE UNDETECTED AIMBOT + WALLHACK + NO RECOIL</h2>
-        <p>Updated • 100% Undetected • New Season Ready</p>
-        
-        <div class="fake-img">Screenshot 1: ESP + Aimbot in Ranked</div>
-        <div class="fake-img">Screenshot 2: No Recoil + Triggerbot</div>
-
-        <button class="btn" onclick="window.location.href='download.html'">DOWNLOAD REAPER v2.4</button>
-        
-        <p style="color:#ff6666; font-size:1.2em;">100K+ downloads</p>
+    <!-- live bar -->
+    <div class="fixed top-0 left-0 w-full bg-black/90 border-b border-red-900 py-2 z-50 flex justify-center items-center">
+        <div class="flex items-center gap-2 text-xs uppercase tracking-widest text-zinc-400">
+            <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+            NEW BUILD • SEASON 2026 • 100% UNDETECTED
+        </div>
     </div>
 
-    <a href="install.html" style="color:#ff6666; font-size:1.3em; text-decoration:none;">→ How to Install</a>
+    <!-- nav -->
+    <nav class="w-full max-w-5xl flex justify-between items-center py-8 px-6 mt-8 glass rounded-3xl relative z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-red-600 rounded-2xl flex items-center justify-center font-black text-3xl shadow-lg">R</div>
+            <span class="font-extrabold text-3xl tracking-tighter">REAPER</span>
+        </div>
+        <div class="flex items-center gap-8 text-sm font-medium">
+            <a href="#" class="hover:text-red-500 transition">Features</a>
+            <button onclick="alert('Discord coming soon 🔥')" class="px-6 py-2 border border-zinc-700 hover:border-red-500 rounded-2xl transition">DISCORD</button>
+        </div>
+    </nav>
 
-    <footer>
-        Reaper Cheats © 2026 • ayzz8dc on discord
+    <main class="flex-1 w-full max-w-5xl px-6 text-center mt-12">
+        <h1 class="text-7xl md:text-[110px] font-black tracking-tighter leading-none uppercase">
+            REAPER.<br><span class="text-red-600">UNDETECTED DOMINANCE.</span>
+        </h1>
+        <p class="text-zinc-400 text-2xl mt-4 max-w-lg mx-auto">Free Rainbow Six Siege cheats • Updated today</p>
+
+        <!-- features -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+            <div class="glass p-8 rounded-3xl glow">
+                <div class="h-64 bg-zinc-900 rounded-2xl mb-6 flex items-center justify-center text-zinc-400 text-xl">ESP + Aimbot in Ranked</div>
+                <p class="text-lg font-medium">Wallhack • Soft Aim • Triggerbot</p>
+            </div>
+            <div class="glass p-8 rounded-3xl glow">
+                <div class="h-64 bg-zinc-900 rounded-2xl mb-6 flex items-center justify-center text-zinc-400 text-xl">No Recoil + Laser Beams</div>
+                <p class="text-lg font-medium">Zero Spread • Perfect Accuracy</p>
+            </div>
+        </div>
+
+        <!-- how to use (on main page) -->
+        <div class="mt-20 max-w-2xl mx-auto glass p-10 rounded-3xl">
+            <h2 class="text-red-600 uppercase tracking-widest text-sm font-bold mb-6">HOW TO USE (3 steps)</h2>
+            <ol class="text-left space-y-6 text-lg">
+                <li class="flex gap-4"><span class="font-black text-red-500">1.</span> Download and extract the file</li>
+                <li class="flex gap-4"><span class="font-black text-red-500">2.</span> Open the .exe</li>
+                <li class="flex gap-4"><span class="font-black text-red-500">3.</span> Launch Rainbow Six Siege then press <span class="font-black">INSERT</span> to open menu</li>
+            </ol>
+        </div>
+
+        <!-- download button -->
+        <div class="mt-16">
+            <button onclick="triggerDownload()" 
+                    class="bg-white text-black font-black text-xl px-20 py-7 rounded-3xl hover:scale-105 transition-all glow">
+                DOWNLOAD REAPER v2.4
+            </button>
+            <p class="text-xs text-zinc-500 mt-6">100K+ users • New season ready</p>
+        </div>
+    </main>
+
+    <footer class="mt-auto py-12 w-full text-center border-t border-white/5 text-xs text-zinc-600">
+        REAPER © 2026 • ayzz8dc on discord
     </footer>
+
+    <!-- loading overlay -->
+    <div id="loading-overlay" class="hidden fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-12 h-1 bg-zinc-800 mx-auto rounded overflow-hidden mb-6">
+                <div class="h-full w-1/2 bg-red-600 animate-[loading_1.5s_infinite]"></div>
+            </div>
+            <p class="uppercase text-xs tracking-[2px] font-bold">Fetching latest build...</p>
+        </div>
+    </div>
+
+    <style>
+        @keyframes loading { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+    </style>
+
+    <script>
+        function triggerDownload() {
+            const overlay = document.getElementById('loading-overlay');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                // CHANGE THIS LINE TO YOUR DIRECT DOWNLOAD LINK
+                window.location.href = "https://your-direct-link-here.com/Reaper_v2.4.exe";
+                overlay.classList.add('hidden');
+            }, 2200);
+        }
+    </script>
 </body>
 </html>
