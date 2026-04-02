@@ -15,24 +15,31 @@
             overflow-x: hidden; 
         }
         .glass { 
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid rgba(255,255,255,0.08); 
-            backdrop-filter: blur(16px); 
+            background: rgba(255,255,255,0.035); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            backdrop-filter: blur(20px); 
         }
         .glow { 
-            box-shadow: 0 0 40px rgba(255,0,0,0.3); 
+            box-shadow: 0 0 35px rgba(255,0,0,0.35); 
         }
         #mouse-glow {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
-            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 0, 0, 0.18) 0%, transparent 65%);
+            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 0, 0, 0.22) 0%, transparent 70%);
             pointer-events: none;
             z-index: -1;
-            transition: all 0.08s ease-out;
+            transition: all 0.1s ease-out;
         }
         .tilt-card {
-            transition: transform 0.1s ease-out;
+            transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-glow {
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 45px rgba(255,0,0,0.6);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -71,7 +78,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
             <div class="tilt-card glass p-10 rounded-3xl glow">
                 <p class="text-3xl font-bold mb-3">ESP / Chams</p>
-                <p class="text-zinc-400">See enemies through walls • Highlight players</p>
+                <p class="text-zinc-400">See enemies through walls • Highlight operators</p>
             </div>
             <div class="tilt-card glass p-10 rounded-3xl glow">
                 <p class="text-3xl font-bold mb-3">Aimbot + No Recoil</p>
@@ -100,8 +107,8 @@
 
         <!-- download -->
         <div class="mt-16">
-            <button onclick="triggerDownload()"
-                    class="bg-white text-black font-black text-xl px-20 py-7 rounded-3xl hover:scale-105 transition-all glow">
+            <button onclick="triggerDownload()" 
+                    class="btn-glow bg-white text-black font-black text-xl px-20 py-7 rounded-3xl hover:scale-105 transition-all glow">
                 DOWNLOAD REAPER v2.4
             </button>
             <p class="text-xs text-zinc-500 mt-6">Completely free • 100K+ users</p>
@@ -129,10 +136,8 @@
     <script>
         // mouse glow
         const glow = document.getElementById('mouse-glow');
-        let targetX = 50;
-        let targetY = 50;
-        let currentX = 50;
-        let currentY = 50;
+        let targetX = 50, targetY = 50;
+        let currentX = 50, currentY = 50;
 
         document.addEventListener('mousemove', (e) => {
             targetX = (e.clientX / window.innerWidth) * 100;
@@ -140,29 +145,25 @@
         });
 
         function animateGlow() {
-            currentX += (targetX - currentX) * 0.07;
-            currentY += (targetY - currentY) * 0.07;
+            currentX += (targetX - currentX) * 0.08;
+            currentY += (targetY - currentY) * 0.08;
             glow.style.setProperty('--x', `${currentX}%`);
             glow.style.setProperty('--y', `${currentY}%`);
             requestAnimationFrame(animateGlow);
         }
         animateGlow();
 
-        // 3D tilt on cards
+        // 3D tilt
         const cards = document.querySelectorAll('.tilt-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 15;
-                const rotateY = (centerX - x) / 15;
-                card.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+                const x = ((e.clientX - rect.left) / rect.width - 0.5) * 25;
+                const y = ((e.clientY - rect.top) / rect.height - 0.5) * -25;
+                card.style.transform = `perspective(1200px) rotateX(${y}deg) rotateY(${x}deg) scale(1.04)`;
             });
             card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)';
             });
         });
 
