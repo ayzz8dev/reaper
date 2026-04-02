@@ -8,44 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&display=swap');
-        body { 
-            background-color: #000; 
-            color: #fff; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            overflow-x: hidden; 
-        }
-        .glass { 
-            background: rgba(255,255,255,0.035); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            backdrop-filter: blur(20px); 
-        }
-        .glow { 
-            box-shadow: 0 0 35px rgba(255,0,0,0.35); 
-        }
-        #mouse-glow {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 0, 0, 0.22) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: -1;
-            transition: all 0.1s ease-out;
-        }
-        .tilt-card {
-            transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .btn-glow {
-            transition: all 0.3s ease;
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 45px rgba(255,0,0,0.6);
-            transform: scale(1.05);
-        }
+        body { background:#000; color:#fff; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+        .glass { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); backdrop-filter:blur(24px); }
+        .glow { box-shadow:0 0 40px rgba(255,0,0,0.4); }
+        #mouse-glow { position:fixed; top:0; left:0; width:100vw; height:100vh; background:radial-gradient(circle at var(--x) var(--y), rgba(255,0,0,0.25) 0%, transparent 65%); pointer-events:none; z-index:-1; }
+        .tilt-card { transition:transform .12s cubic-bezier(0.4,0,0.2,1); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col items-center">
 
-    <!-- mouse glow -->
     <div id="mouse-glow"></div>
 
     <!-- live bar -->
@@ -74,7 +45,6 @@
         </h1>
         <p class="text-zinc-400 text-2xl mt-4 max-w-lg mx-auto">Free gaming cheats • New season ready</p>
 
-        <!-- features with tilt -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
             <div class="tilt-card glass p-10 rounded-3xl glow">
                 <p class="text-3xl font-bold mb-3">ESP / Chams</p>
@@ -86,29 +56,17 @@
             </div>
         </div>
 
-        <!-- how to use -->
         <div class="mt-20 max-w-2xl mx-auto glass p-10 rounded-3xl">
             <h2 class="text-red-600 uppercase tracking-widest text-sm font-bold mb-8">HOW TO USE (3 EASY STEPS)</h2>
             <ol class="text-left space-y-8 text-lg">
-                <li class="flex gap-4 items-start">
-                    <span class="font-black text-red-500 text-xl">1.</span>
-                    Download and extract the file
-                </li>
-                <li class="flex gap-4 items-start">
-                    <span class="font-black text-red-500 text-xl">2.</span>
-                    Open the .exe FIRST
-                </li>
-                <li class="flex gap-4 items-start">
-                    <span class="font-black text-red-500 text-xl">3.</span>
-                    Next, launch R6 (or your desired game) and press INSERT to open the menu (changeable in settings). More information can be found in the 'readme.txt' inside the zip file you can download below.
-                </li>
+                <li class="flex gap-4 items-start"><span class="font-black text-red-500 text-xl">1.</span> Download and extract the file</li>
+                <li class="flex gap-4 items-start"><span class="font-black text-red-500 text-xl">2.</span> Open the .exe FIRST</li>
+                <li class="flex gap-4 items-start"><span class="font-black text-red-500 text-xl">3.</span> Next, launch R6 (or your desired game) and press INSERT to open the menu (changeable in settings). More information can be found in the 'readme.txt' inside the zip file you can download below.</li>
             </ol>
         </div>
 
-        <!-- download -->
         <div class="mt-16">
-            <button onclick="triggerDownload()" 
-                    class="btn-glow bg-white text-black font-black text-xl px-20 py-7 rounded-3xl hover:scale-105 transition-all glow">
+            <button onclick="triggerDownload()" class="bg-white text-black font-black text-xl px-20 py-7 rounded-3xl hover:scale-105 transition-all glow">
                 DOWNLOAD REAPER v2.4
             </button>
             <p class="text-xs text-zinc-500 mt-6">Completely free • 100K+ users</p>
@@ -119,7 +77,6 @@
         REAPER © 2026 • ayzz8dc on discord
     </footer>
 
-    <!-- loading overlay -->
     <div id="loading-overlay" class="hidden fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center">
         <div class="text-center">
             <div class="w-12 h-1 bg-zinc-800 mx-auto rounded overflow-hidden mb-6">
@@ -129,52 +86,18 @@
         </div>
     </div>
 
-    <style>
-        @keyframes loading { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
-    </style>
+    <style>@keyframes loading{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}</style>
 
     <script>
-        // mouse glow
         const glow = document.getElementById('mouse-glow');
-        let targetX = 50, targetY = 50;
-        let currentX = 50, currentY = 50;
+        let tx=50,ty=50,cx=50,cy=50;
+        document.addEventListener('mousemove',e=>{tx=(e.clientX/window.innerWidth)*100;ty=(e.clientY/window.innerHeight)*100});
+        function animate(){cx+=(tx-cx)*0.08;cy+=(ty-cy)*0.08;glow.style.setProperty('--x',cx+'%');glow.style.setProperty('--y',cy+'%');requestAnimationFrame(animate)}animate();
 
-        document.addEventListener('mousemove', (e) => {
-            targetX = (e.clientX / window.innerWidth) * 100;
-            targetY = (e.clientY / window.innerHeight) * 100;
-        });
-
-        function animateGlow() {
-            currentX += (targetX - currentX) * 0.08;
-            currentY += (targetY - currentY) * 0.08;
-            glow.style.setProperty('--x', `${currentX}%`);
-            glow.style.setProperty('--y', `${currentY}%`);
-            requestAnimationFrame(animateGlow);
-        }
-        animateGlow();
-
-        // 3D tilt
         const cards = document.querySelectorAll('.tilt-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width - 0.5) * 25;
-                const y = ((e.clientY - rect.top) / rect.height - 0.5) * -25;
-                card.style.transform = `perspective(1200px) rotateX(${y}deg) rotateY(${x}deg) scale(1.04)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)';
-            });
-        });
+        cards.forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=((e.clientX-r.left)/r.width-0.5)*28;const y=((e.clientY-r.top)/r.height-0.5)*-28;c.style.transform=`perspective(1100px) rotateX(${y}deg) rotateY(${x}deg) scale(1.05)`});c.addEventListener('mouseleave',()=>{c.style.transform='perspective(1100px) rotateX(0deg) rotateY(0deg) scale(1)'})});
 
-        function triggerDownload() {
-            const overlay = document.getElementById('loading-overlay');
-            overlay.classList.remove('hidden');
-            setTimeout(() => {
-                window.location.href = "https://www.dropbox.com/scl/fi/vi1t6knqftj20jk7xnr19/Reaper.zip?rlkey=8x9953fq580d15fv0n1zwdyyu&st=bovfyxqg&dl=1";
-                overlay.classList.add('hidden');
-            }, 2200);
-        }
+        function triggerDownload(){const o=document.getElementById('loading-overlay');o.classList.remove('hidden');setTimeout(()=>{window.location.href="https://www.dropbox.com/scl/fi/vi1t6knqftj20jk7xnr19/Reaper.zip?rlkey=8x9953fq580d15fv0n1zwdyyu&st=bovfyxqg&dl=1";o.classList.add('hidden')},2200)}
     </script>
 </body>
 </html>
